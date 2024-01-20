@@ -20,4 +20,4 @@ spring:
     password: root
 
   jwt:
-    secret: asmdaljdlkasjdlakjdlaskjdsalkdmasldkmasldmalkd
+    secret: abcdefghijklmnopqrstuvwxyz0123456789
