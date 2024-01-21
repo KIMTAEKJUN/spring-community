@@ -20,6 +20,11 @@ public enum ErrorCode {
     TOKEN_EXPIRED(401, "TOKEN-002", "만료된 토큰입니다."),
     UNAUTHENTICATED(401, "USER-003","접근 권한이 없습니다"),
 
+    // Board
+    BOARD_NOT_FOUND(404, "BOARD-001", "게시판을 찾을 수 없습니다."),
+
+    // Article
+    ARTICLE_NOT_FOUND(404, "ARTICLE-001", "게시글을 찾을 수 없습니다."),
     ;
     private int status;
     private String code;
