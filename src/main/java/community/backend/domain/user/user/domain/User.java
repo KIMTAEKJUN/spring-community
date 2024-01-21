@@ -1,7 +1,6 @@
 package community.backend.domain.user.user.domain;
 
 import community.backend.domain.board.domain.Article;
-import community.backend.domain.board.domain.Board;
 import community.backend.domain.user.user.domain.enums.Provider;
 import community.backend.domain.user.user.domain.enums.Role;
 import community.backend.global.entity.BaseTimeEntity;
