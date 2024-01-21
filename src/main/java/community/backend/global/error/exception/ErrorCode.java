@@ -22,6 +22,7 @@ public enum ErrorCode {
 
     // Board
     BOARD_NOT_FOUND(404, "BOARD-001", "게시판을 찾을 수 없습니다."),
+    BOARD_DUPLICATED_NAME(409, "BOARD-002", "이미 존재하는 게시판입니다."),
 
     // Article
     ARTICLE_NOT_FOUND(404, "ARTICLE-001", "게시글을 찾을 수 없습니다."),
