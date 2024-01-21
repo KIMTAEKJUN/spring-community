@@ -1,5 +1,7 @@
 package community.backend.domain.user.user.domain;
 
+import community.backend.domain.board.domain.Article;
+import community.backend.domain.board.domain.Board;
 import community.backend.domain.user.user.domain.enums.Provider;
 import community.backend.domain.user.user.domain.enums.Role;
 import community.backend.global.entity.BaseTimeEntity;
@@ -9,6 +11,9 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
@@ -41,6 +46,9 @@ public class User extends BaseTimeEntity {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role;
+
+    @OneToMany(mappedBy = "user")
+    private List<Article> articles = new ArrayList<Article>();
 
     @Builder
     public User(Long id, String name, String email, String password, String profileImage, Provider provider, Role role) {
