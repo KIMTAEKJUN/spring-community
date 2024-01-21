@@ -3,6 +3,7 @@ package community.backend.domain.board.domain;
 import community.backend.domain.user.user.domain.User;
 import community.backend.global.entity.BaseTimeEntity;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -17,11 +18,17 @@ public class Article extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Size(min = 2, max = 20)
     @Column(nullable = false)
-    private String name;
+    private String author;
 
+    @Size(min = 2, max = 30)
     @Column(nullable = false)
-    private String description;
+    private String title;
+
+    @Size(min = 1, max = 500)
+    @Column(nullable = false)
+    private String content;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
@@ -32,10 +39,11 @@ public class Article extends BaseTimeEntity {
     private Board board;
 
     @Builder
-    public Article(Long id, String name, String description, User user, Board board) {
+    public Article(Long id, String author, String title, String content, User user, Board board) {
         this.id = id;
-        this.name = name;
-        this.description = description;
+        this.author = author;
+        this.title = title;
+        this.content = content;
         this.user = user;
         this.board = board;
     }
