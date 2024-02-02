@@ -48,6 +48,11 @@ public class Article extends BaseTimeEntity {
         this.board = board;
     }
 
+    public void updateArticle(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
+
     // public Long getUserId() {
     //     return User.builder().id(user.getId()).build().getId();
     // }
