@@ -23,6 +23,7 @@ public class BoardService {
     private final ArticleRepository articleRepository;
 
     // Board
+    // TODO: 예외처리 = 하나뿐민 게시글을 삭제한 후 다시 조회하면, 빈 배열의 게시판이 아니라 게시판이 없다고 나옴
     public List<BoardResponseDto> getBoards() {
         List<Board> boards = boardRepository.findAllByOrderByCreatedAtDesc();
 
@@ -104,5 +105,26 @@ public class BoardService {
                 .build();
 
         articleRepository.save(article);
+    }
+
+    public void updateArticle(Long id, Long articleId, ArticleRequestDto dto) {
+        Board board = boardRepository.findById(id)
+                .orElseThrow(() -> BoardNotFoundException.EXCEPTION);
+
+        Article article = articleRepository.findByIdAndBoard(articleId, board)
+                .orElseThrow(() -> ArticleNotFoundException.EXCEPTION);
+
+        article.updateArticle(dto.getTitle(), dto.getContent());
+        articleRepository.save(article);
+    }
+
+    public void deleteArticle(Long id, Long articleId) {
+        Board board = boardRepository.findById(id)
+                .orElseThrow(() -> BoardNotFoundException.EXCEPTION);
+
+        Article article = articleRepository.findByIdAndBoard(articleId, board)
+                .orElseThrow(() -> ArticleNotFoundException.EXCEPTION);
+
+        articleRepository.delete(article);
     }
 }
