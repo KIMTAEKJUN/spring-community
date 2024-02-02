@@ -12,22 +12,26 @@ import java.util.List;
 @Builder
 public class ArticleResponseDto {
     private Long id;
+    // private Long userId;
+    private Long boardId;
     private String author;
     private String title;
     private String content;
-    private LocalDateTime createdDate;
-    private LocalDateTime modifiedDate;
+    private LocalDateTime createdAt;
+    private LocalDateTime modifiedAt;
 
     public static ArticleResponseDto of(Article article) {
         if (article == null) throw ArticleNotFoundException.EXCEPTION;
 
         return ArticleResponseDto.builder()
                 .id(article.getId())
+                .boardId(article.getBoardId())
+                // .userId(article.getUserId())
                 .author(article.getAuthor())
                 .title(article.getTitle())
                 .content(article.getContent())
-                .createdDate(article.getCreatedDate())
-                .modifiedDate(article.getModifiedDate())
+                .createdAt(article.getCreatedAt())
+                .modifiedAt(article.getModifiedAt())
                 .build();
     }
 
