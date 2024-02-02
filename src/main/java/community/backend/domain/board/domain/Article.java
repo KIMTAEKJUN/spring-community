@@ -9,6 +9,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
@@ -30,6 +32,12 @@ public class Article extends BaseTimeEntity {
     @Column(nullable = false)
     private String content;
 
+    @Column(nullable = false)
+    private LocalDateTime createdDate;
+
+    @Column(nullable = false)
+    private LocalDateTime modifiedDate;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
@@ -39,11 +47,13 @@ public class Article extends BaseTimeEntity {
     private Board board;
 
     @Builder
-    public Article(Long id, String author, String title, String content, User user, Board board) {
+    public Article(Long id, String author, String title, String content, LocalDateTime createdDate, LocalDateTime modifiedDate, User user, Board board) {
         this.id = id;
         this.author = author;
         this.title = title;
         this.content = content;
+        this.createdDate = createdDate;
+        this.modifiedDate = modifiedDate;
         this.user = user;
         this.board = board;
     }
