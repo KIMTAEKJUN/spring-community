@@ -58,6 +58,10 @@ public class Article extends BaseTimeEntity {
     // }
 
     public Long getBoardId() {
-        return Board.builder().id(board.getId()).build().getId();
+        return board.getId();
+    }
+
+    public String getBoardName() {
+        return board.getName();
     }
 }
