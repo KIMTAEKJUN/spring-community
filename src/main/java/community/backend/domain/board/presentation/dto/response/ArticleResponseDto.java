@@ -14,6 +14,7 @@ public class ArticleResponseDto {
     private Long id;
     // private Long userId;
     private Long boardId;
+    private String boardName;
     private String author;
     private String title;
     private String content;
@@ -26,6 +27,7 @@ public class ArticleResponseDto {
         return ArticleResponseDto.builder()
                 .id(article.getId())
                 .boardId(article.getBoardId())
+                .boardName(article.getBoardName())
                 // .userId(article.getUserId())
                 .author(article.getAuthor())
                 .title(article.getTitle())
